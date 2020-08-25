@@ -1,20 +1,15 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { range } from 'rxjs';
 import { filter, find, first, last, take, tap } from 'rxjs/operators';
-import { CardComponent } from '../card/card.component';
-import { Link } from '../card/link';
+import { PageComponent } from './page.component';
 
 @Component({
-  selector: 'app-page2',
-  templateUrl: './page2.component.html',
-  styleUrls: ['./page2.component.scss'],
+  selector: 'app-filtering',
+  templateUrl: './page.template.html',
+  styles: []
 })
-export class Page2Component implements AfterViewInit {
-  @ViewChild(CardComponent) card: CardComponent;
-
+export class FilteringComponent extends PageComponent implements AfterViewInit {
   headline = 'Filter';
-  facts: Set<string> = new Set();
-  links: Set<Link> = new Set();
 
   ngAfterViewInit(): void {
     this.run();

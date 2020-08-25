@@ -1,19 +1,14 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { EMPTY, from, Observable, of, range, Subscriber, timer } from 'rxjs';
-import { CardComponent } from '../card/card.component';
-import { Link } from '../card/link';
+import { AfterViewInit, Component } from '@angular/core';
+import { EMPTY, from, interval, Observable, of, range, Subscriber, timer } from 'rxjs';
+import { PageComponent } from './page.component';
 
 @Component({
-  selector: 'app-page1',
-  templateUrl: './page1.component.html',
-  styleUrls: ['./page1.component.scss'],
+  selector: 'app-creation',
+  templateUrl: './page.template.html',
+  styles: []
 })
-export class Page1Component implements AfterViewInit {
-  @ViewChild(CardComponent) card: CardComponent;
-
+export class CreationComponent extends PageComponent implements AfterViewInit {
   headline = 'Observables und deren Erzeugung';
-  facts: Set<string> = new Set();
-  links: Set<Link> = new Set();
 
   ngAfterViewInit(): void {
     this.run();
@@ -138,6 +133,7 @@ export class Page1Component implements AfterViewInit {
   }
 
   interval(): void {
-    // todo
+    interval(500).subscribe(v => this.card.result('emits every n ms', v));
+    this.facts.add('interval emitted alle n Millisekunden.');
   }
 }

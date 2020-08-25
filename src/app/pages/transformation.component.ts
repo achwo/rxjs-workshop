@@ -1,20 +1,15 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { concat, from, interval, merge } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { CardComponent } from '../card/card.component';
-import { Link } from '../card/link';
+import { PageComponent } from './page.component';
 
 @Component({
-  selector: 'app-page3',
-  templateUrl: './page3.component.html',
-  styleUrls: ['./page3.component.scss'],
+  selector: 'app-transformation',
+  templateUrl: './page.template.html',
+  styles: []
 })
-export class Page3Component implements AfterViewInit {
-  @ViewChild(CardComponent) card: CardComponent;
-
+export class TransformationComponent extends PageComponent implements AfterViewInit {
   headline = 'Grundlegende Transformation und Kombination';
-  facts: Set<string> = new Set();
-  links: Set<Link> = new Set();
 
   ngAfterViewInit(): void {
     this.run();

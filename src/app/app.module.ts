@@ -4,17 +4,29 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
-import { Page1Component } from './page1/page1.component';
-import { Page2Component } from './page2/page2.component';
-import { Page3Component } from './page3/page3.component';
+import { FilteringComponent } from './pages/filtering.component';
+import { Filtering2Component } from './pages/filtering2.component';
+import { TransformationComponent } from './pages/transformation.component';
+import { Transformation2Component } from './pages/transformation2.component';
+import { CreationComponent } from './pages/creation.component';
+import { ErrorHandlingComponent } from './pages/error-handling.component';
+import { SubjectsComponent } from './pages/subjects.component';
+import { Combination2Component } from './pages/combination2.component';
+import { Creation2Component } from './pages/creation2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    Page1Component,
-    Page2Component,
-    Page3Component
+    CreationComponent,
+    FilteringComponent,
+    TransformationComponent,
+    Creation2Component,
+    ErrorHandlingComponent,
+    SubjectsComponent,
+    Transformation2Component,
+    Combination2Component,
+    Filtering2Component
   ],
   imports: [
     BrowserModule,
