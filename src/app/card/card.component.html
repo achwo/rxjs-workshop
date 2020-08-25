@@ -1,5 +1,13 @@
 <h1>{{ headline }}</h1>
-<div class="content"><ng-content></ng-content></div>
+<div class="content">
+  <ul class="facts">
+    <li *ngFor="let fact of facts">{{ fact }}</li>
+  </ul>
+  <ng-content></ng-content>
+</div>
+<div class="actions">
+  <button (click)="run.emit()">Run</button>
+</div>
 <div class="output">
   <h2>Output</h2>
   <div class="output-content">

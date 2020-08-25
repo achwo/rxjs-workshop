@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Link } from './link';
 
-type LogLevel = 'result' | 'error';
+type LogLevel = 'info' | 'result' | 'error';
 
 @Component({
   selector: 'app-card',
@@ -10,6 +11,9 @@ type LogLevel = 'result' | 'error';
 export class CardComponent {
   output: string[] = [];
   @Input() headline = '';
+  @Input() facts: string[] = [];
+  @Input() links: Link[] = [];
+  @Output() run = new EventEmitter<void>();
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -21,7 +25,11 @@ export class CardComponent {
     this.log('error', ...data);
   }
 
-  private log(level: LogLevel = 'result', ...data: any[]): void {
+  info(...data: any[]): void {
+    this.log('info', ...data);
+  }
+
+  private log(level: LogLevel, ...data: any[]): void {
     console.log(...data);
     let line = '';
     for (const v of data) {
