@@ -1,0 +1,9 @@
+<h1>{{ headline }}</h1>
+<div class="content"><ng-content></ng-content></div>
+<div class="output">
+  <h2>Output</h2>
+  <div class="output-content">
+    {{ output }}
+    <p *ngFor="let o of output">{{ o }}</p>
+  </div>
+</div>

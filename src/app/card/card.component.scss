@@ -1,0 +1,23 @@
+@import "../../colors";
+:host {
+  display: block;
+  padding: 30px 40px;
+  background: white;
+  border-radius: 0.5em;
+}
+
+h1 {
+  color: $primary;
+  font-size: 1.2rem;
+}
+
+.output {
+  h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .output-content {
+    background: $primary-lightest;
+  }
+}
