@@ -12,6 +12,7 @@ import { CreationComponent } from './pages/creation.component';
 import { ErrorHandlingComponent } from './pages/error-handling.component';
 import { SubjectsComponent } from './pages/subjects.component';
 import { Combination2Component } from './pages/combination2.component';
+import { CacheExampleComponent } from './pages/cache-example.component';
 import { Creation2Component } from './pages/creation2.component';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { Creation2Component } from './pages/creation2.component';
     SubjectsComponent,
     Transformation2Component,
     Combination2Component,
-    Filtering2Component
+    Filtering2Component,
+    CacheExampleComponent
   ],
   imports: [
     BrowserModule,

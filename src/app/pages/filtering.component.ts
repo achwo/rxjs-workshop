@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { range } from 'rxjs';
+import { of, range } from 'rxjs';
 import { filter, find, first, last, take, tap } from 'rxjs/operators';
 import { PageComponent } from './page.component';
 
@@ -15,7 +15,9 @@ export class FilteringComponent extends PageComponent implements AfterViewInit {
     this.run();
   }
 
-  run(): void {}
+  run(): void {
+    this.first();
+  }
 
   filter(): void {
     range(1, 5)
@@ -47,6 +49,16 @@ export class FilteringComponent extends PageComponent implements AfterViewInit {
       .pipe(first())
       .subscribe((v) => this.card.result(v));
     this.facts.add('first gibt den ersten emitteten Wert zurück');
+
+    // range(1, 5)
+    //   .pipe(first(v => v >= 3))
+    //   .subscribe((v) => this.card.result(v));
+    // this.facts.add('first kann auch filtern');
+
+    // of(undefined)
+    //   .pipe(first(v => v >= 3, 'default'))
+    //   .subscribe((v) => this.card.result(v));
+    // this.facts.add('wenn first nichts zurückgibt, bis das Observable terminiert, gibt es den default-Wert zurück.');
   }
 
   last(): void {
