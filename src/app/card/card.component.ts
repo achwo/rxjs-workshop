@@ -12,7 +12,7 @@ export class CardComponent {
   output: string[] = [];
   @Input() headline = '';
   @Input() facts: string[] = [];
-  @Input() links: Link[] = [];
+  @Input() links: Set<Link> = new Set();
   @Output() run = new EventEmitter<void>();
 
   constructor(private cdr: ChangeDetectorRef) {}

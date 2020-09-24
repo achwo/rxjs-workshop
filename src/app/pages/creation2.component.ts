@@ -13,5 +13,5 @@ export class Creation2Component extends PageComponent implements AfterViewInit {
   run(): void {
 
   }
-// - advanced creation: defer, fromEvent
+// todo - advanced creation: defer, fromEvent
 }

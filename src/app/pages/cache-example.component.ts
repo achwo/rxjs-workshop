@@ -9,7 +9,7 @@ import { share, shareReplay, tap } from 'rxjs/operators';
   styles: []
 })
 export class CacheExampleComponent extends PageComponent implements AfterViewInit {
-  headline = '';
+  headline = 'Cache Beispiele';
 
 
   private source$ = range(1, 3).pipe(tap(v => this.card.info('Source value', v)));
@@ -30,11 +30,10 @@ export class CacheExampleComponent extends PageComponent implements AfterViewIni
 
 
   run(): void {
-    // this.withoutCaching();
+     this.withoutCaching();
     // this.cache1();
     // this.cache2();
-    this.cache3();
-
+//    this.cache3();
   }
 
   withoutCaching(): void {
@@ -82,8 +81,11 @@ export class CacheExampleComponent extends PageComponent implements AfterViewIni
 
     this.facts.add('Ein Property returned immer dasselbe Observable, daher wirkt der Cache.');
     this.facts.add('Diese Lösung wirkt genauso wie die vorherige, nur mit weniger Code.');
-  }
 
-  // todo https://dev.to/prestonjlamb/rxjs-caching-and-refreshing-in-angular-2icn
+    this.links.add({
+      link: 'https://dev.to/prestonjlamb/rxjs-caching-and-refreshing-in-angular-2icn',
+  };
+
+
 
 }
