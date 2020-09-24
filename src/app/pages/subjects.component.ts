@@ -9,7 +9,7 @@ import { PageComponent } from './page.component';
   styles: []
 })
 export class SubjectsComponent extends PageComponent implements AfterViewInit {
-  headline = '';
+  headline = 'Subject';
   ngAfterViewInit(): void {}
 
   run(): void {

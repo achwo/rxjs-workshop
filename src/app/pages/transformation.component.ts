@@ -16,6 +16,8 @@ export class TransformationComponent extends PageComponent implements AfterViewI
   }
 
   public run(): void {
+//    this.map();
+//    this.merge();
     this.concat();
   }
 

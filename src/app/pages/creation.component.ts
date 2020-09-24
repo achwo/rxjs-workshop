@@ -18,8 +18,13 @@ export class CreationComponent extends PageComponent implements AfterViewInit {
 //    this.basic();
 //    this.alternativeSyntax();
 //    this.of();
+//    this.errors();
+//    this.from();
 //    this.from2();
-    this.timer();
+//    this.empty();
+//    this.range();
+//    this.timer();
+    this.interval();
   }
 
   basic(): void {
@@ -29,9 +34,9 @@ export class CreationComponent extends PageComponent implements AfterViewInit {
     });
 
     true$.subscribe(
-      (result: boolean) => this.card.result(result),
+      (result: boolean) => this.card.result(result), // <= result handler
       (error) => this.card.error(error),
-      () => this.card.info('After everything happened')
+      () => this.card.info('After everything happened') // <= complete handler
     );
 
     this.facts.add('Der next-Handler behandelt Werte, die per subscriber.next verschickt werden.');
@@ -45,12 +50,15 @@ export class CreationComponent extends PageComponent implements AfterViewInit {
     });
 
     true$.subscribe({
-      next: (result: boolean) => this.card.result(result),
-      error: (error) => this.card.error(error),
+      next: (result: boolean) => this.card.result(result), // <= wie im try-Block
+      error: (error) => this.card.error(error), // <= catch
       complete: () => this.card.info('After everything happened'),
     });
 
     this.facts.add('Der Parameter für subscribe kann auch ein Objekt sein.');
+    this.facts.add('cold / kaltes Observable: ein Observable, dass einen Wert emitted und dann completed.');
+    this.facts.add('hot / heißes Observable: ein Observable, dass nach dem emitten geöffnet bleibt und nicht abzusehen ist, wann es completed.');
+    this.facts.add('heiße Observable können zu memory leaks führen.');
   }
 
   of(): void {
@@ -93,25 +101,25 @@ export class CreationComponent extends PageComponent implements AfterViewInit {
     const bool$ = from([true, false]);
     bool$.subscribe((result: boolean) => this.card.result(result));
 
-    this.facts.add('From emitted nacheinander die Werte aus dem Array');
+    this.facts.add('from emitted nacheinander die Werte aus dem Array');
   }
 
   from2(): void {
-    const bool$ = from([true, new Error('Fail')]);
+    const bool$ = from([true, new Error('Fail'), false]);
     bool$.subscribe(
       (result: boolean) => this.card.result(result),
       (e) => this.card.error(e)
     );
-//    const bool2$ = new Observable(o => {
-//      o.next(true);
-//      o.next(new Error('Fail'));
-//      o.complete();
-//    });
-//
-//    bool2$.subscribe(
-//      (result: boolean) => this.card.result(result),
-//      (e) => this.card.error(e)
-//    );
+    const bool2$ = new Observable(o => {
+      o.next(true);
+      o.next(new Error('Fail'));
+      o.complete();
+    });
+
+    bool2$.subscribe(
+      (result: boolean) => this.card.result(result),
+      (e) => this.card.error(e)
+    );
 
   }
 

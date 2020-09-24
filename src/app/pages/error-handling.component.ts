@@ -9,26 +9,30 @@ import { PageComponent } from './page.component';
   styles: [],
 })
 export class ErrorHandlingComponent extends PageComponent implements AfterViewInit {
-  headline = '';
+  headline = 'Fehlerbehandlung';
 
   ngAfterViewInit(): void {}
 
   run(): void {
-    this.retrying();
+//    this.throwingErrors();
+//    this.catchingErrors();
+//    this.finalizing();
+//    this.retrying();
+    this.conditionalRetrying();
   }
 
   throwingErrors(): void {
     throwError(new Error('This is an error')).subscribe({
       next: (_) => this.card.info('Der next-Block wird nie erreicht'),
       error: (e: Error) => this.card.result(e.message),
-      complete: () => this.card.info('Der complete-Block wird immer aufgerufen'),
+      complete: () => this.card.info('Der complete-Block wird nicht immer aufgerufen'),
     });
     this.facts.add('throwError erzeugt ein Observable, das nur einen Fehler emitted');
   }
 
   catchingErrors(): void {
     throwError(new Error('This is an error'))
-      .pipe(catchError((e) => of('Default-Wert')))
+      .pipe(catchError(e => of({ username: 'Felix'})))
       .subscribe((v) => this.card.result(v));
 
     this.facts.add(
@@ -62,7 +66,7 @@ export class ErrorHandlingComponent extends PageComponent implements AfterViewIn
             concatMap((r) => {
               // here we can check the error.
               // We can specify the retry only if we are getting 5xx errors for instance.
-              if (r === 0) {
+              if (r === 0) { // i.e. http 200
                 return of(r);
               }
               // in other cases we throw an error down the pipe
@@ -84,3 +88,4 @@ export class ErrorHandlingComponent extends PageComponent implements AfterViewIn
     this.facts.add('retryWhen in Kombination mit delay ist nützlich, wenn Server kurz nicht erreichbar sind.');
   }
 }
+

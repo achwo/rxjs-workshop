@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { PageComponent } from './page.component';
-import { Observable, of, range } from 'rxjs';
-import { share, shareReplay, tap } from 'rxjs/operators';
+import { Observable, range } from 'rxjs';
+import { shareReplay, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cache-example',
@@ -83,8 +83,10 @@ export class CacheExampleComponent extends PageComponent implements AfterViewIni
     this.facts.add('Diese Lösung wirkt genauso wie die vorherige, nur mit weniger Code.');
 
     this.links.add({
+      text: 'rxjs caching and refreshing',
       link: 'https://dev.to/prestonjlamb/rxjs-caching-and-refreshing-in-angular-2icn',
-  };
+    });
+  }
 
 
 
