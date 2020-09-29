@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { concat, Observable, Subject, timer, ReplaySubject, BehaviorSubject } from 'rxjs';
-import { last, multicast, publish, publishBehavior, publishReplay, share, shareReplay } from 'rxjs/operators';
+import { concat, Observable, Subject, timer, ReplaySubject, BehaviorSubject, of, from } from 'rxjs';
+import { last, multicast, publish, publishBehavior, publishReplay, share, shareReplay, tap, delay } from 'rxjs/operators';
 import { PageComponent } from './page.component';
 
 @Component({
@@ -74,5 +74,6 @@ export class SubjectsComponent extends PageComponent implements AfterViewInit {
 
     this.facts.add('shareReplay wiederholt vorherige Werte.');
     this.facts.add('shareReplay wird oft benutzt, um Requests zu cachen.');
+
   }
 }

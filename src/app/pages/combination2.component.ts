@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { PageComponent } from './page.component';
-import {of, forkJoin, fromEvent, combineLatest, Subject} from 'rxjs';
+import {of, forkJoin, fromEvent, combineLatest, Subject, from} from 'rxjs';
 
 @Component({
   selector: 'app-combination2',
@@ -12,14 +12,13 @@ export class Combination2Component extends PageComponent implements AfterViewIni
   ngAfterViewInit(): void {}
 
   run(): void {
-
 //    this.forkJoining();
 //    this.forkJoiningRisk();
     this.combiningLatest();
   }
 
   forkJoining(): void {
-    const ob1$ = of(1);
+    const ob1$ = from([1, 2]);
     const ob2$ = of('two');
     const ob3$ = of([1, 2, 3]);
 

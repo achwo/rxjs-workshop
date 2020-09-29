@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { PageComponent } from './page.component';
 import {interval, of, from, concat, timer} from 'rxjs';
-import {tap, map, take, mergeMap, delay, concatMap, switchMap, exhaustMap} from 'rxjs/operators';
+import {tap, map, take, mergeMap, delay, concatMap, switchMap, exhaustMap, toArray} from 'rxjs/operators';
 
 @Component({
   selector: 'app-transformation2',
@@ -9,17 +9,17 @@ import {tap, map, take, mergeMap, delay, concatMap, switchMap, exhaustMap} from 
   styles: []
 })
 export class Transformation2Component extends PageComponent implements AfterViewInit {
-  headline = '';
+  headline = 'Transformation 2';
 
   ngAfterViewInit(): void {}
 
   run(): void {
-    this.theProblem();
+//    this.theProblem();
 //    this.higherOrderMappings();
 //    this.mergeMapping();
 //    this.concatMapping();
 //    this.switchMapping();
-//    this.exhaustMapping();
+    this.exhaustMapping();
   }
 
   theProblem(): void {
@@ -61,10 +61,14 @@ export class Transformation2Component extends PageComponent implements AfterView
   mergeMapping(): void {
     const fakeGetRequest$ = from([1, 2]);
     const fakeDependentRequest$ = fakeGetRequest$.pipe(
-      mergeMap(v => concat(of(`outer ${v} inner a`), of(`outer ${v} inner b`).pipe(delay(800))))
+      mergeMap(v => concat(of(`mergeMap: outer ${v} inner a`), of(`mergeMap: outer ${v} inner b`).pipe(delay(800))))
     );
-
     fakeDependentRequest$.subscribe(v => this.card.result(v));
+
+//    const receivers$ = from(['a', 'b', 'c']);
+//    const sendMessageRequest = (receiver) => of('Request for ' + receiver);
+//
+//    receivers$.pipe(mergeMap(sendMessageRequest), toArray()).subscribe(v => this.card.result(v));
 
     this.facts.add('mergeMap: Wenn etwas vom inneren emitted wird, wird es sofort zurückgegeben.');
     this.facts.add('mergeMap: Wenn das äußere emitted, während das innere läuft, wird ein weiteres inneres gestartet.');
@@ -75,7 +79,7 @@ export class Transformation2Component extends PageComponent implements AfterView
   concatMapping(): void {
     const fakeGetRequest$ = from([1, 2]);
     const fakeDependentRequest$ = fakeGetRequest$.pipe(
-      concatMap(v => concat(of(`outer ${v} inner a`), of(`outer ${v} inner b`).pipe(delay(800))))
+      concatMap(v => concat(of(`concatMap: outer ${v} inner a`), of(`concatMap: outer ${v} inner b`).pipe(delay(800))))
     );
 
     fakeDependentRequest$.subscribe(v => this.card.result(v));
@@ -84,13 +88,12 @@ export class Transformation2Component extends PageComponent implements AfterView
     this.facts.add('concatMap: Wenn das äußere emitted, während das innere läuft, wartet es, bis das innere komplett ist.');
     this.facts.add('concatMap: Bereits laufende innere werden nicht abgebrochen.');
     this.facts.add('concatMap: Die Reihenfolge ist garantiert.');
-    this.facts.add('Wenn das äußere Observable ein kaltes Observable ist, sind concatMap und mergeMap äquivalent.');
   }
 
   switchMapping(): void {
     const fakeGetRequest$ = from([1, 2]);
     const fakeDependentRequest$ = fakeGetRequest$.pipe(
-      switchMap(v => concat(of(`outer ${v} inner a`), of(`outer ${v} inner b`).pipe(delay(800))))
+      switchMap(v => concat(of(`switchMap: outer ${v} inner a`), of(`switchMap: outer ${v} inner b`).pipe(delay(800))))
     );
 
     fakeDependentRequest$.subscribe(v => this.card.result(v));
