@@ -1,4 +1,4 @@
 <div class="container">
   <p>{{ weatherString$ | async }}</p>
+  <app-button text="Refresh" (click)="refresh()" [color]="buttonColor$ | async"></app-button>
 </div>
-<p class="error" *ngIf="error"></p>

@@ -19,7 +19,16 @@ describe('WeatherService', () => {
   });
 
   describe('getWeather', () => {
-    it('returns the weather from the backend', () => {
+    it('returns the weather from the backend (with of)', () => {
+      let result: Weather;
+      service.getWeather().subscribe(w => result = w);
+
+      expect(result.sky).toEqual('sunny');
+      expect(result.temperatureInC).toEqual(-2);
+      expect(result.toString()).toContain('Wir haben');
+    });
+
+    xit('returns the weather from the backend (with http service)', () => {
       const weather = {
         sky: 'sunny',
         temperatureInC: 15

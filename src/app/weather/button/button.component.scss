@@ -1,0 +1,14 @@
+button {
+  padding: 1em 2em;
+  font-weight: bold;
+
+  &.grey {
+    background-color: grey;
+    color: white;
+  }
+
+  &.yellow {
+    background-color: yellow;
+    color: black;
+  }
+}
