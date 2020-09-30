@@ -9,6 +9,7 @@ import { Filtering2Component } from './pages/filtering2.component';
 import { SubjectsComponent } from './pages/subjects.component';
 import { TransformationComponent } from './pages/transformation.component';
 import { Transformation2Component } from './pages/transformation2.component';
+import { WeatherComponent } from './weather/weather.component';
 
 const routes: Routes = [
   { path: 'page1', component: CreationComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'page8', component: Filtering2Component },
   // { path: 'page4', component: Creation2Component },
   { path: 'cache', component: CacheExampleComponent },
+  { path: 'weather', component: WeatherComponent },
   { path: '**', redirectTo: 'page1' },
 ];
 

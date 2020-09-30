@@ -14,6 +14,8 @@ import { SubjectsComponent } from './pages/subjects.component';
 import { Combination2Component } from './pages/combination2.component';
 import { CacheExampleComponent } from './pages/cache-example.component';
 import { Creation2Component } from './pages/creation2.component';
+import {HttpClientModule} from '@angular/common/http';
+import { WeatherModule } from './weather/weather.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { Creation2Component } from './pages/creation2.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    WeatherModule
   ],
   providers: [],
   bootstrap: [AppComponent]
