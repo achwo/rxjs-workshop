@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather mockup</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <p>Wir haben gerade 14° und regen.</p>
+
+        <button class="sun">Update Weather</button>
+        <p class="error">An error has happened.</p>
+      </div>
+      <div class="stories">
+        <h1>Stories</h1>
+        <ul>
+          <li>Als Nutzer möchte ich ich das aktuelle Wetter sehen können, um meinen Tag besser planen zu können.</li>
+          <li>Als Nutzer möchte ich das angezeigte Wetter aktualisieren können, damit ich die nicht falsch informiert bin.</li>
+        </ul>
+      </div>
+
+      <div class="steps">
+        <h1>Arbeitsschritte</h1>
+        <ol>
+          <li>Types Weather, Temperature</li>
+          <li>WeatherService Methode bauen, die das Wetter holt.</li>
+          <li>WeatherModule zum Kapseln</li>
+          <li>WeatherComponent erstellen und Routing erweitern</li>
+          <li>WeatherComponent holt beim Laden das Wetter vom Service und zeigt es an.</li>
+          <li>WeatherComponent zeigt bei Fehlern eine Fehlermeldung an.</li>
+          <li>WeatherComponent bekommt einen Refresh-Button.</li>
+          <li>Button passt sich visuell dem Wetter an.</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

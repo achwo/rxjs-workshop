@@ -1,0 +1,57 @@
+/* reset */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: Helvetica, sans-serif;
+  font-size: calc(0.5em + 1.5vw);
+  margin: 0;
+}
+
+* + * {
+  margin-top: 1em;
+}
+
+body {
+  width: 100%;
+}
+
+* + li, li + * {
+  margin-top: 0.5em;
+}
+
+li + li {
+  margin-top: 0.2em;
+}
+
+/* component */ 
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+
+}
+
+.error {
+  background: #ffdddd;
+  color: red;
+  font-weight: bold;
+  padding: 1em;
+}
+
+/* button */
+button {
+  padding: 1em 2em;
+  font-weight: bold;
+}
+
+button.rain {
+  background-color: grey;
+  color: white;
+}
+
+button.sun {
+  background-color: yellow;
+  color: black;
+}
